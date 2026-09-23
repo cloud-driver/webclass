@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Favorite Planet</title>
+    <style>
+        em{
+            font-style: italic;
+            color: purple;
+        }
+        a:link {
+            color: green;
+            background-color: yellow;
+        }
+        a:visited {
+            color: green;
+        }
+        a:hover {
+            color: pink;
+        }
+        a:active {
+            color: blue;
+        }   
+        body{
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+        h1{
+            color: #444;
+            background-color: lightblue;
+        }
+        h2{
+            color: #333;
+            background-color: antiquewhite;
+        }
+        h3{
+            color: #333;
+            background-color: lightyellow;
+        }
+        s{
+            color: red;
+        }
+        div.content {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(260px, 1fr));
+            grid-template-rows: repeat(2, minmax(200px, auto));
+            gap: 20px;
+            background-color: #e0f7fa;
+            resize: both;
+            min-height: 800px;
+            padding: 10px;
+        }
+        div.planet-info, div.exploration-info, div.contact-info, div.exam-info {
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            min-height: 200px;
+        }
+        div.planet-info {
+            grid-column: 1;
+            grid-row: 1;
+            background-color: #ffffff;
+        }
+        div.exploration-info {
+            grid-column: 2;
+            grid-row: 1;
+            background-color: #ffffff;
+        }
+        div.contact-info {
+            grid-column: 1;
+            grid-row: 2;
+            background-color: #ffffff;
+        }
+        div.exam-info {
+            grid-column: 2;
+            grid-row: 2;
+            background-color: #f1e7d2;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>My Favorite Planet</h1>
+    <div class="content">
+        <div class="planet-info">
+            <h2>Mars</h2>
+            <p>Mars is the <b>fourth planet</b> from the Sun.</p>
+            <p>I think Mars is <i>one of the most interesting planets</i>in our solar system.</p>
+            <hr>
+            <h3>Some Facts</h3>
+            <p>
+                Mars has 2 moons:<br>
+                Phobos<br>
+                Deimos
+            </p>
+            <p>The average distance from Mars to the Sun is about 2.28 &times; 10<sup>8</sup> km.</p>
+            <p>Water is H<sub>2</sub>O.</p>
+            <hr>
+            <h3>Why I Like Mars</h3>
+            <ol>
+                <li>Mars is cold and dry</li>
+                <li>but scientists are still exploring it.</li>
+            </ol>
+            <p><b>Maybe humans will visit Mars one day!</b></p>
+            <hr>
+        </div>
+
+        <div class="exploration-info">
+            <h2>Keep Exploring</h2>
+            <p><strong>Remember:</strong> science begins with curiosity.</p>
+            <p>I <em>really</em> want to see humans explore Mars in the future.</p>
+            <p><acronym title="National Aeronautics and Space Administration">NASA</acronym> has sent many missions to Mars.</p>
+        </div>
+
+        <div class="contact-info">
+            <h2>Contact Me</h2>
+            <address>
+                <p><a href="mailto:no-reply@hasaki.idv.tw">no-reply@hasaki.idv.tw</a></p>
+                <p><a href="tel:+1234567890">+1 (234) 567-890</a></p>
+                <p>123 Main Street<br>Anytown, USA <s>12345</s>&nbsp;<a style="color: aquamarine;">12346</a></p>
+            </address>
+        </div>
+
+        <div class="exam-info">
+            <h2>Some exam</h2>
+            <ul>
+                <li>If you ask why there is a exam?</li>
+                <li>I have no idea.</li>
+            </ul>
+            <a href="https://project.hasaki.idv.tw/problem/18" target="_blank"><img src="https://project.hasaki.idv.tw/static/uploads/img_3f039744dca841cb9604fc099f78dd1c.png" alt="Exam 18" width="100%"></a><br>
+        </div>
+    </div>
+</body>
+</html>

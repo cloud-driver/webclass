@@ -3,113 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Favorite Planet</title>
+    <title>party website</title>
     <style>
-        em{
-            font-style: italic;
-            color: purple;
-        }
-        a:link {
-            color: green;
-            background-color: yellow;
-        }
-        a:visited {
-            color: green;
-        }
-        a:hover {
-            color: pink;
-        }
-        a:active {
-            color: blue;
-        }   
-        body{
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 20px;
-            background-color: #f4f4f4;
-        }
-        h1{
-            color: #444;
-            background-color: lightblue;
-        }
-        h2, h3{
-            color: #333;
-            background-color: antiquewhite;
-        }
-        s{
-            color: red;
-        }
+        * { box-sizing: border-box; }
+        body { margin: 0; background: #1d1e24; color: #fff6e7; }
+        header, footer { background: #903545; text-align: center; }
+        header { padding: 34px 16px 25px; min-height: 165px; }
+        h1 { margin: 0 0 15px; font-size: clamp(28px, 3vw, 34px); letter-spacing: .02em; }
+        header p { margin: 0 0 16px; font-size: 13px; }
+        header .tagline { font-style: italic; }
+        .hero { min-height: 465px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 11px; padding: 16px; }
+        .hero-image { display: block; width: min(596px, 100%); aspect-ratio: 596 / 398; background-image: url('./image.png'); background-size: cover; }
+        .hero small { font-size: 12px; font-style: italic; }
+        .content { display: grid; grid-template-columns: 1fr 1fr; }
+        section { min-height: 210px; padding: 27px 17px 20px; font-size: 12px; line-height: 1.25; }
+        section h2 { font-size: 19px; margin: 0 0 11px; }
+        section p { margin: 0 0 9px; }
+        .about { background: #fff1d1; color: #56392d; }
+        .highlights { background: #2c3e4e; }
+        .program { background: #e7d0ab; color: #56392d; min-height: 220px; }
+        .tickets { background: #273345; min-height: 220px; }
+        .highlights h2, .tickets h2 { color: #f2d9a8; }
+        .highlights strong, .tickets strong { color: #f2d9a8; }
+        .schedule-update { margin-top: 8px; }
+        .schedule-update del { color: #9c514b; }
+        .schedule-update mark { background: #e6f0db; color: #385447; font-weight: bold; }
+        a { color: inherit; }
+        footer { padding: 26px 16px 15px; min-height: 125px; font-size: 12px; }
+        footer h2 { color: #f2d9a8; font-size: 18px; margin: 0 0 10px; }
+        footer p { margin: 0 0 12px; }
+        footer a { color: #f2d9a8; }
     </style>
 </head>
 
 <body>
-
-    <h1>My Favorite Planet</h1>
-
-    <h2>Mars</h2>
-
-    <p>
-        Mars is the <b>fourth planet</b> from the Sun.
-    </p>
-
-    <p>
-        I think Mars is <i>one of the most interesting planets</i>in our solar system.
-    </p>
-
-    <hr>
-
-    <h3>Some Facts</h3>
-
-    <p>
-        Mars has 2 moons:<br>
-        Phobos<br>
-        Deimos
-    </p>
-
-    <p>
-        The average distance from Mars to the Sun is about 2.28 &times; 10<sup>8</sup> km.
-    </p>
-
-    <p>
-        Water is H<sub>2</sub>O.
-    </p>
-
-    <hr>
-
-    <h3>Why I Like Mars</h3>
-
-    <p>
-        Mars is cold and dry,<br>
-        but scientists are still exploring it.
-    </p>
-
-    <p>
-        <b>Maybe humans will visit Mars one day!</b>
-    </p>
-
-    <hr>
-
-    <h2>Keep Exploring</h2>
-
-    <p><strong>Remember:</strong> science begins with curiosity.</p>
-
-    <p>I <em>really</em> want to see humans explore Mars in the future.</p>
-
-    <p><acronym title="National Aeronautics and Space Administration">NASA</acronym> has sent many missions to Mars.</p>
-
-    <hr>
-
-    <h2>Contact Me</h2>
-    <address>
-        <p><a href="mailto:no-reply@hasaki.idv.tw">no-reply@hasaki.idv.tw</a></p>
-        <p><a href="tel:+1234567890">+1 (234) 567-890</a></p>
-        <p>123 Main Street<br>Anytown, USA <s>12345</s>12346</p>
-    </address>
-
-    <hr>
-
-    <h2>Some exam</h2>
-
-    <a href="https://project.hasaki.idv.tw/problem/18" target="_blank"><img src="https://project.hasaki.idv.tw/static/uploads/img_3f039744dca841cb9604fc099f78dd1c.png" alt="Exam 18" width="100%"></a><br>
+  <header>
+    <h1>MIDNIGHT BLUES</h1>
+    <p class="tagline">A Night of Jazz, Rhythm &amp; Dance</p>
+    <p>7:30 PM – 10:30 PM · Taipei</p>
+  </header>
+  <main>
+    <div class="hero">
+      <a class="hero-image" href="#tickets" aria-label="View event ticket information"></a>
+      <small>Click the image to visit the event website.</small>
+    </div>
+    <div class="content">
+      <section class="about">
+        <h2>About the Night</h2>
+        <p>Welcome to <strong>Midnight Blue</strong>, a night inspired by classic jazz clubs and social dancing.</p>
+        <p>Enjoy live music, meet new people, and spend the evening dancing to <em>swing, jazz, and rhythm &amp; blues.</em></p>
+        <p>“Good music. Good people. One unforgettable night.”</p>
+      </section>
+      <section class="highlights">
+        <h2>Night Highlights</h2>
+        <p><strong>LIVE BAND</strong><br>The Blue Notes Quartet</p>
+        <p><strong>SOCIAL DANCE</strong><br>An open dance floor for everyone.</p>
+        <p><strong>DRESS UP</strong><br>Vintage style is encouraged, but not required.</p>
+        <p>Music starts at 8:00 PM.</p>
+      </section>
+      <section class="program">
+        <h2>Tonight's Program</h2>
+        <p><strong>7:30 PM</strong> · Doors Open</p>
+        <p><strong>8:00 PM</strong> · Live Jazz Set</p>
+        <p><strong>9:00 PM</strong> · Social Dance</p>
+        <p><strong>10:00 PM</strong> · Rhythm &amp; Blues Jam</p>
+        <p class="schedule-update"><strong>Schedule Update:</strong><br><del>Doors open at 8:00 PM.</del><br><mark>Doors now open at 7:30 PM.</mark></p>
+      </section>
+      <section class="tickets" id="tickets">
+        <h2>Tickets</h2>
+        <p>Early Bird: NT$800<br><strong>Special Price: NT$600</strong></p>
+        <p>Your ticket includes:<br>Live music + Social dance + Welcome drink</p>
+        <p>Only <strong>80 tickets</strong> are available.</p>
+        <a href="mailto:hello@midnightblue.example?subject=Midnight%20Blues%20ticket">Reserve Your Ticket</a>
+      </section>
+    </div>
+  </main>
+  <footer>
+    <h2>Contact Us</h2>
+    <p>Midnight Blue Jazz Club<br>88 Blue Note Lane, Taipei</p>
+    <a href="mailto:hello@midnightblue.example">hello@midnightblue.example</a> &nbsp;|&nbsp; <a href="tel:+886212345678">+886-2-1234-5678</a>
+  </footer>
 </body>
 </html>
