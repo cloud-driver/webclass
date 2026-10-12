@@ -1,87 +1,42 @@
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Task 3 - Home</title>
-
-        <style>
-    body {
-        margin: 0;
-        font-family: Arial, sans-serif;
-    }
-
-    h1 {
-        text-align: center;
-        margin-top: 30px;
-    }
-
-    .navbar {
-        list-style-type: none;
-        margin: 0;
-        padding: 0;
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quokka</title>
+    <style>
+      .container {
         display: flex;
-        justify-content: center;
-    }
-
-    .navbar li {
-        margin: 0;
-        padding: 0;
-    }
-
-    .navbar a {
-        display: block;
-        padding: 15px 25px;
-        background-color: green;
-        color: white;
-
-        text-decoration-line: underline;
-        text-decoration-style: wavy;
-        text-decoration-color: white;
-        text-underline-offset: 4px;
-    }
-
-    .navbar a:hover {
-        background-color: gray;
-    }
-
-    .navbar a:active,
-    .navbar a.current {
-        background-color: black;
-    }
-
-    .content {
-        width: 500px;
-        margin: 20px auto;
-    }
-</style>
-    </head>
-
-    <body>
-        <h1>Task 3</h1>
-
-        <ul class="navbar">
-            <li><a href="index.html" class="current">Home</a></li>
-        <li><a href="news/news.html">News</a></li>
-        <li><a href="contact/contact.html">Contact</a></li>
-        <li><a href="schedule/schedule.html">Schedule</a></li>
-        <li><a href="about/about.html">About</a></li>
-        </ul>
-
-        <div class="content">
-            <ul>
-            <li>Mousses</li>
-            <li>
-                Pastries
-                <ul>
-                    <li>Croissant</li>
-                    <li>Milles-feille</li>
-                    <li>Palmier</li>
-                    <li>Profiteroles</li>
-                </ul>
-            </li>
-            <li>Tarts</li>
-        </ul>
-        </div>
-    </body>
-    </html>
+        align-items: center;
+        gap: 20px;
+        max-width: 500px;
+        width: 100%;
+        margin: 0 auto;
+        padding: 0 15px;
+      }
+      .container img {
+        width: 200px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>The Quokka</h1>
+    </div>
+    <div class="container">
+      <div class="text">
+        <p>The quokka is a small marsupial native to Australia. It is well known for its friendly appearance and often looks like it is smiling. Quokkas usually live on islands and coastal areas, and they are most active at night.</p>
+      </div>
+      <img src="quokka.png" alt="A smiling quokka" class="quokka-image">
+    </div>
+    <div class="container">
+      <h2>Where They Live</h2>
+    </div>
+    <div class="container">
+      <img src="beach.png" alt="A smiling quokka" class="quokka-image">
+      <div class="text">
+        <p>Quokkas are mainly found on Rottnest Island and some other nearby islands in Western Australia. They live in bushland, grasslands, and coastal areas where there is plenty of food and shelter.</p>
+      </div>
+    </div>
+  </body>
+</html>

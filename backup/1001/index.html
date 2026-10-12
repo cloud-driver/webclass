@@ -1,0 +1,87 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Task 3 - Home</title>
+
+        <style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+    }
+
+    h1 {
+        text-align: center;
+        margin-top: 30px;
+    }
+
+    .navbar {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+    }
+
+    .navbar li {
+        margin: 0;
+        padding: 0;
+    }
+
+    .navbar a {
+        display: block;
+        padding: 15px 25px;
+        background-color: green;
+        color: white;
+
+        text-decoration-line: underline;
+        text-decoration-style: wavy;
+        text-decoration-color: white;
+        text-underline-offset: 4px;
+    }
+
+    .navbar a:hover {
+        background-color: gray;
+    }
+
+    .navbar a:active,
+    .navbar a.current {
+        background-color: black;
+    }
+
+    .content {
+        width: 500px;
+        margin: 20px auto;
+    }
+</style>
+    </head>
+
+    <body>
+        <h1>Task 3</h1>
+
+        <ul class="navbar">
+            <li><a href="index.html" class="current">Home</a></li>
+        <li><a href="news/news.html">News</a></li>
+        <li><a href="contact/contact.html">Contact</a></li>
+        <li><a href="schedule/schedule.html">Schedule</a></li>
+        <li><a href="about/about.html">About</a></li>
+        </ul>
+
+        <div class="content">
+            <ul>
+            <li>Mousses</li>
+            <li>
+                Pastries
+                <ul>
+                    <li>Croissant</li>
+                    <li>Milles-feille</li>
+                    <li>Palmier</li>
+                    <li>Profiteroles</li>
+                </ul>
+            </li>
+            <li>Tarts</li>
+        </ul>
+        </div>
+    </body>
+    </html>
