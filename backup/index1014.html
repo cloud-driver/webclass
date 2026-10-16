@@ -1,0 +1,129 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quokka</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    .container {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      max-width: 500px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 0 15px;
+    }
+
+    .image-container {
+      position: relative;
+      width: 200px;
+      height: 200px;
+      flex-shrink: 0;
+      border-radius: 50%;
+      overflow: hidden;
+    }
+
+    .image {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transition: .5s ease;
+      background-color: rgba(185, 88, 230, 0.8);
+    }
+
+    .image-container:hover .overlay {
+      opacity: 1;
+    }
+
+    .text {
+      color: white;
+      font-size: 20px;
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+      width: 100%;
+    }
+
+    .info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .image-container {
+        align-self: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>The Quokka</h1>
+  </div>
+
+  <div class="container">
+    <div class="info">
+      <p>
+        The quokka is a small marsupial native to Australia.
+        It is well known for its friendly appearance and often
+        looks like it is smiling. Quokkas usually live on islands
+        and coastal areas, and they are most active at night.
+      </p>
+    </div>
+
+    <div class="image-container">
+      <img src="./img/quokka.png" alt="A smiling quokka" class="image">
+      <div class="overlay">
+        <div class="text">The Quokka</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <h2>Where They Live</h2>
+  </div>
+
+  <div class="container">
+    <div class="image-container">
+      <img src="./img/beach.png" alt="Quokka habitat" class="image">
+      <div class="overlay">
+        <div class="text">Where They Live</div>
+      </div>
+    </div>
+
+    <div class="info">
+      <p>
+        Quokkas are mainly found on Rottnest Island and some
+        other nearby islands in Western Australia. They live
+        in bushland, grasslands, and coastal areas where there
+        is plenty of food and shelter.
+      </p>
+    </div>
+  </div>
+</body>
+</html>
