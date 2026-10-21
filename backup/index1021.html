@@ -1,0 +1,502 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tokyo</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 80px;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      color: #222;
+    }
+
+    /* Navigation */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 70px;
+      background-color: white;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 30px;
+    }
+
+    .nav-container {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .navbar-brand {
+      font-size: 26px;
+      font-weight: bold;
+      color: black;
+      text-decoration: none;
+    }
+
+    .navbar-nav {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-link {
+      color: black;
+      text-decoration: none;
+      font-size: 16px;
+      transition: color 0.3s;
+    }
+
+    .nav-link:hover {
+      color: #d49b00;
+      font-weight: bold;
+    }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      width: 100%;
+      min-height: 540px;
+      margin-top: 70px;
+      background-image: url("./img/tokyo_night.png");
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: center;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.85),
+        rgba(0, 0, 0, 0.1)
+      );
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      color: white;
+      padding-top: 60px;
+      padding-bottom: 60px;
+    }
+
+    .hero-content h1 {
+      font-size: 60px;
+      margin: 0 0 15px;
+    }
+
+    .hero-content p {
+      font-size: 20px;
+      line-height: 1.6;
+    }
+
+    /* Content Sections */
+    .content-section {
+      padding-top: 80px;
+      padding-bottom: 80px;
+      min-height: 350px;
+    }
+
+    .catalog {
+      font-size: 14px;
+      color: #d49b00;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+
+    .content-section h1 {
+      font-size: 36px;
+      margin-top: 10px;
+      margin-bottom: 30px;
+    }
+
+    .info-content {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      width: 100%;
+      margin-top: 20px;
+    }
+
+    .info-content p {
+      flex: 1;
+      min-width: 0;
+      line-height: 1.8;
+      font-size: 16px;
+    }
+
+    /* Responsive Images */
+    .image-content {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .image-content img {
+      display: block;
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      object-fit: contain;
+    }
+
+    /* Gallery */
+    .gallery-container {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .image-container {
+      position: relative;
+      width: 200px;
+      height: 200px;
+      flex-shrink: 0;
+      border-radius: 50%;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .image-container .image {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .gallery-overlay {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+      background-color: rgba(185, 88, 230, 0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .image-container:hover .gallery-overlay {
+      opacity: 1;
+    }
+
+    .image-container:hover .image {
+      transform: scale(1.1);
+    }
+
+    .gallery-text {
+      color: white;
+      font-size: 20px;
+      font-weight: bold;
+      text-align: center;
+      padding: 15px;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #171717;
+      color: white;
+      text-align: center;
+      padding: 35px 20px;
+    }
+
+    footer p {
+      margin: 8px 0;
+      font-size: 14px;
+      color: #ccc;
+    }
+
+    /* Tablet */
+    @media (max-width: 768px) {
+      .navbar-nav {
+        gap: 15px;
+      }
+
+      .nav-link {
+        font-size: 13px;
+      }
+
+      .hero {
+        min-height: 420px;
+      }
+
+      .hero-content h1 {
+        font-size: 46px;
+      }
+
+      .content-section {
+        padding-top: 60px;
+        padding-bottom: 60px;
+      }
+
+      .content-section h1 {
+        font-size: 30px;
+      }
+
+      .info-content {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 20px;
+      }
+
+      .image-content {
+        width: 100%;
+      }
+
+      .image-container {
+        width: 180px;
+        height: 180px;
+      }
+    }
+
+    /* Mobile */
+    @media (max-width: 480px) {
+      html {
+        scroll-padding-top: 110px;
+      }
+
+      .navbar {
+        height: 100px;
+      }
+
+      .nav-container {
+        flex-direction: column;
+        justify-content: center;
+        gap: 12px;
+      }
+
+      .navbar-brand {
+        font-size: 24px;
+      }
+
+      .navbar-nav {
+        gap: 15px;
+      }
+
+      .nav-link {
+        font-size: 11px;
+      }
+
+      .hero {
+        margin-top: 100px;
+        min-height: 350px;
+      }
+
+      .hero-content h1 {
+        font-size: 40px;
+      }
+
+      .hero-content p {
+        font-size: 16px;
+      }
+
+      .container {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      .content-section h1 {
+        font-size: 26px;
+      }
+
+      .info-content p {
+        font-size: 15px;
+      }
+
+      .gallery-container {
+        gap: 20px;
+      }
+
+      .image-container {
+        width: min(75vw, 240px);
+        height: auto;
+        aspect-ratio: 1 / 1;
+      }
+    }
+  </style>
+</head>
+
+<body id="top">
+
+  <nav class="navbar">
+    <div class="nav-container container">
+      <a class="navbar-brand" href="#top">Tokyo</a>
+
+      <ul class="navbar-nav">
+        <li>
+          <a class="nav-link" href="#discover">DISCOVER</a>
+        </li>
+        <li>
+          <a class="nav-link" href="#neighborhoods">
+            NEIGHBORHOODS
+          </a>
+        </li>
+        <li>
+          <a class="nav-link" href="#gallery">GALLERY</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content container">
+      <h1>Tokyo</h1>
+      <p>Discover the vibrant city of Tokyo.</p>
+    </div>
+  </section>
+
+  <section class="content-section container" id="discover">
+    <div class="catalog">
+      <p>01 / DISCOVER</p>
+    </div>
+
+    <h1>Where tradition meets tomorrow.</h1>
+
+    <div class="info-content">
+      <p>
+        <strong>MORE THAN A DESTINATION</strong>
+        <br><br>
+        Tokyo is a city that never stops surprising you.
+        One moment, you are surrounded by bright signs
+        and busy crossings. A few streets away, you
+        might discover a quiet shrine hidden between
+        modern buildings.
+        <br><br>
+        What makes Tokyo special is the way old and
+        new exist side by side. Every neighborhood
+        has its own rhythm, atmosphere, and story
+        to tell.
+        <br><br>
+        <em>
+          "The best way to explore Tokyo is to get
+          a little lost."
+        </em>
+      </p>
+
+      <div class="image-content">
+        <img
+          src="./img/DISCOVER.png"
+          alt="Tokyo city at night"
+          loading="lazy"
+        >
+      </div>
+    </div>
+  </section>
+
+  <section
+    class="content-section container"
+    id="neighborhoods"
+  >
+    <div class="catalog">
+      <p>02 / NEIGHBORHOODS</p>
+    </div>
+
+    <h1>Slow down. Look closer.</h1>
+
+    <div class="info-content">
+      <div class="image-content">
+        <img
+          src="./img/tample.png"
+          alt="Traditional temple in Tokyo"
+          loading="lazy"
+        >
+      </div>
+
+      <p>
+        <strong>THE QUIETER SIDE</strong>
+        <br><br>
+        Beyond the crowded stations and famous
+        landmarks, Tokyo is full of peaceful corners.
+        Small cafés, traditional shops, and narrow
+        streets invite visitors to take their time.
+        <br><br>
+        Spend an afternoon walking without a strict
+        plan. Notice the details: wooden doors,
+        warm lanterns, tiny gardens, and the
+        everyday life happening all around you.
+        <br><br>
+        Sometimes the most memorable places are
+        the ones you never planned to visit.
+      </p>
+    </div>
+  </section>
+
+  <section class="content-section container" id="gallery">
+    <div class="catalog">
+      <p>03 / GALLERY</p>
+    </div>
+
+    <h1>Gallery</h1>
+
+    <div class="gallery-container">
+      <div class="image-container">
+        <img
+          src="./img/1.png"
+          alt="Tokyo gallery image 1"
+          class="image"
+          loading="lazy"
+        >
+        <div class="gallery-overlay">
+          <div class="gallery-text">Tokyo</div>
+        </div>
+      </div>
+
+      <div class="image-container">
+        <img
+          src="./img/2.png"
+          alt="Tokyo gallery image 2"
+          class="image"
+          loading="lazy"
+        >
+        <div class="gallery-overlay">
+          <div class="gallery-text">Explore</div>
+        </div>
+      </div>
+
+      <div class="image-container">
+        <img
+          src="./img/3.png"
+          alt="Tokyo gallery image 3"
+          class="image"
+          loading="lazy"
+        >
+        <div class="gallery-overlay">
+          <div class="gallery-text">Discover</div>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+</html>
