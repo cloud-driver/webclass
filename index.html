@@ -3,408 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tokyo</title>
+  <title>Tokyo — A City of Contrasts</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-      scroll-padding-top: 80px;
-    }
-
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      color: #222;
-    }
-
-    .container {
-      width: 100%;
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 30px;
-    }
-
-    /* Navigation */
-    .navbar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 70px;
-      background-color: white;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-      z-index: 1000;
-    }
-
-    .nav-container {
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .navbar-brand,
-    .nav-link {
-      color: black;
-      text-decoration: none;
-    }
-
-    .navbar-brand {
-      font-size: 26px;
-      font-weight: bold;
-    }
-
-    .navbar-nav {
-      display: flex;
-      align-items: center;
-      gap: 30px;
-      list-style: none;
-      margin: 0;
-      padding: 0;
-    }
-
-    .nav-link {
-      font-size: 16px;
-      white-space: nowrap;
-      transition: color 0.3s;
-    }
-
-    .nav-link:hover,
-    .nav-link:focus-visible {
-      color: #d49b00;
-    }
-
-    /* Hero */
-    .hero {
-      position: relative;
-      min-height: 540px;
-      margin-top: 70px;
-      background: url("./img/tokyo_night.png") center / cover;
-      display: flex;
-      align-items: center;
-    }
-
-    .hero-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        to right,
-        rgba(0, 0, 0, 0.85),
-        rgba(0, 0, 0, 0.1)
-      );
-    }
-
-    .hero-content {
-      position: relative;
-      color: white;
-      padding-top: 60px;
-      padding-bottom: 60px;
-    }
-
-    .hero-content h1 {
-      margin: 0 0 15px;
-      font-size: 60px;
-    }
-
-    .hero-content p {
-      font-size: 20px;
-      line-height: 1.6;
-    }
-
-    /* Content */
-    .content-section {
-      padding-top: 80px;
-      padding-bottom: 80px;
-    }
-
-    .catalog {
-      margin: 0 0 10px;
-      color: #d49b00;
-      font-size: 14px;
-      font-weight: bold;
-    }
-
-    .section-title {
-      margin: 10px 0 30px;
-      font-size: 36px;
-    }
-
-    .info-content {
-      display: flex;
-      align-items: center;
-      gap: 40px;
-      margin-top: 20px;
-    }
-
-    .info-content p,
-    .image-content {
-      flex: 1;
-      min-width: 0;
-    }
-
-    .info-content p {
-      font-size: 16px;
-      line-height: 1.8;
-    }
-
-    .image-content img {
-      display: block;
-      width: 100%;
-      height: auto;
-      border-radius: 8px;
-    }
-
-    /* Travel Planner */
-    .planner-description {
-      margin: 0 0 50px;
-      color: #777;
-      line-height: 1.7;
-    }
-
-    .budget-title {
-      margin: 80px 0 24px;
-      font-size: 32px;
-    }
-
-    .table-wrapper {
-      overflow-x: auto;
-    }
-
-    .travel-table {
-      width: 100%;
-      min-width: 580px;
-      border-collapse: collapse;
-      text-align: left;
-    }
-
-    .travel-table th,
-    .travel-table td {
-      border: 1px solid #eeede8;
-      padding: 22px 20px;
-      line-height: 1.5;
-      vertical-align: middle;
-    }
-
-    .travel-table thead th {
-      background-color: #2d3b35;
-      color: white;
-      font-size: 14px;
-      letter-spacing: 0.5px;
-    }
-
-    .travel-table tbody tr:nth-child(even) {
-      background-color: #f8f7f2;
-    }
-
-    .travel-table tbody th {
-      background-color: #f0efe8;
-    }
-
-    .itinerary-table tbody th {
-      width: 18%;
-    }
-
-    .itinerary-table .highlight {
-      background-color: #f7eae0;
-      color: #b25a46;
-      font-weight: bold;
-      text-align: center;
-    }
-
-    .budget-table tbody th {
-      width: 40%;
-    }
-
-    .budget-table td:last-child {
-      text-align: right;
-      white-space: nowrap;
-    }
-
-    /* Gallery */
-    .gallery-container {
-      display: flex;
-      justify-content: space-around;
-      flex-wrap: wrap;
-      gap: 30px;
-      margin-top: 40px;
-    }
-
-    .image-container {
-      position: relative;
-      width: 200px;
-      aspect-ratio: 1;
-      flex-shrink: 0;
-      border-radius: 50%;
-      overflow: hidden;
-    }
-
-    .image-container .image {
-      display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.5s ease;
-    }
-
-    .gallery-overlay {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background-color: rgba(185, 88, 230, 0.8);
-      opacity: 0;
-      transition: opacity 0.5s ease;
-    }
-
-    .image-container:hover .gallery-overlay,
-    .image-container:focus-visible .gallery-overlay {
-      opacity: 1;
-    }
-
-    .image-container:hover .image,
-    .image-container:focus-visible .image {
-      transform: scale(1.1);
-    }
-
-    .image-container:focus-visible {
-      outline: 3px solid #d49b00;
-      outline-offset: 5px;
-    }
-
-    .gallery-text {
-      padding: 15px;
-      color: white;
-      font-size: 20px;
-      font-weight: bold;
-      text-align: center;
-    }
-
-    /* Tablet */
-    @media (max-width: 768px) {
-      .navbar-nav {
-        gap: 15px;
-      }
-
-      .nav-link {
-        font-size: 12px;
-      }
-
-      .hero {
-        min-height: 420px;
-      }
-
-      .hero-content h1 {
-        font-size: 46px;
-      }
-
-      .content-section {
-        padding-top: 60px;
-        padding-bottom: 60px;
-      }
-
-      .section-title {
-        font-size: 30px;
-      }
-
-      .info-content {
-        flex-direction: column;
-        align-items: stretch;
-        gap: 20px;
-      }
-
-      .image-container {
-        width: 180px;
-      }
-    }
-
-    /* Mobile */
-    @media (max-width: 600px) {
-      html {
-        scroll-padding-top: 110px;
-      }
-
-      .container {
-        padding-left: 20px;
-        padding-right: 20px;
-      }
-
-      .navbar {
-        height: 100px;
-      }
-
-      .nav-container {
-        flex-direction: column;
-        justify-content: center;
-        gap: 12px;
-      }
-
-      .navbar-brand {
-        font-size: 24px;
-      }
-
-      .navbar-nav {
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 8px 12px;
-      }
-
-      .nav-link {
-        font-size: 11px;
-      }
-
-      .hero {
-        margin-top: 100px;
-        min-height: 350px;
-      }
-
-      .hero-content h1 {
-        font-size: 40px;
-      }
-
-      .hero-content p {
-        font-size: 16px;
-      }
-
-      .section-title {
-        font-size: 26px;
-      }
-
-      .info-content p {
-        font-size: 15px;
-      }
-
-      .budget-title {
-        margin-top: 50px;
-        font-size: 26px;
-      }
-
-      .travel-table th,
-      .travel-table td {
-        padding: 16px 14px;
-        font-size: 14px;
-      }
-
-      .gallery-container {
-        gap: 20px;
-      }
-
-      .image-container {
-        width: min(75vw, 240px);
-      }
-    }
-
-    @media (hover: none) {
-      .gallery-overlay {
-        opacity: 1;
-        background-color: rgba(0, 0, 0, 0.3);
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body id="top">
@@ -420,7 +21,7 @@
           <a class="nav-link" href="#neighborhoods">NEIGHBORHOODS</a>
         </li>
         <li>
-          <a class="nav-link" href="#travel-planner">TRAVEL PLANNER</a>
+          <a class="nav-link" href="#travel-planner">Planner</a>
         </li>
         <li>
           <a class="nav-link" href="#gallery">GALLERY</a>
@@ -429,15 +30,16 @@
     </div>
   </nav>
 
-  <section class="hero">
+  <header class="hero">
     <div class="hero-overlay"></div>
 
     <div class="hero-content container">
       <h1>Tokyo</h1>
-      <p>Discover the vibrant city of Tokyo.</p>
+      <p>A City of Contrasts. Discover where tradition meets tomorrow.</p>
     </div>
-  </section>
+  </header>
 
+  <main>
   <section class="content-section container" id="discover">
     <p class="catalog">01 / DISCOVER</p>
 
@@ -466,8 +68,8 @@
 
       <div class="image-content">
         <img
-          src="./img/DISCOVER.png"
-          alt="Tokyo city at night"
+          src="./img/Discover.png"
+          alt="Illustration of the Tokyo skyline"
           loading="lazy"
         >
       </div>
@@ -483,7 +85,7 @@
       <div class="image-content">
         <img
           src="./img/tample.png"
-          alt="Traditional temple in Tokyo"
+          alt="Illustration of a traditional Japanese temple"
           loading="lazy"
         >
       </div>
@@ -510,7 +112,7 @@
   <section class="content-section container" id="travel-planner">
     <p class="catalog">03 / TRAVEL PLANNER</p>
 
-    <h2 class="section-title">Three Days in Tokyo.</h2>
+    <h2 class="section-title">Three Days in Tokyo</h2>
 
     <p class="planner-description">
       Plan your mornings, afternoons, and evenings
@@ -522,6 +124,7 @@
         class="travel-table itinerary-table"
         aria-label="Three-day Tokyo itinerary"
       >
+        <caption class="sr-only">Three-day Tokyo itinerary</caption>
         <thead>
           <tr>
             <th scope="col">Day</th>
@@ -558,7 +161,7 @@
     <h3 class="budget-title">Travel Budget</h3>
 
     <p class="planner-description">
-      A sample budget for transportation and meals in Tokyo.
+      Illustrative costs in Japanese yen (JPY), not live prices. This partial budget excludes accommodation, flights, and attraction tickets.
     </p>
 
     <div class="table-wrapper">
@@ -612,7 +215,7 @@
       <div class="image-container" tabindex="0">
         <img
           src="./img/1.png"
-          alt="Tokyo gallery image 1"
+          alt="Japanese temple illustration"
           class="image"
           loading="lazy"
         >
@@ -624,7 +227,7 @@
       <div class="image-container" tabindex="0">
         <img
           src="./img/2.png"
-          alt="Tokyo gallery image 2"
+          alt="Tokyo crossing illustration"
           class="image"
           loading="lazy"
         >
@@ -636,7 +239,7 @@
       <div class="image-container" tabindex="0">
         <img
           src="./img/3.png"
-          alt="Tokyo gallery image 3"
+          alt="Tokyo skyline illustration"
           class="image"
           loading="lazy"
         >
@@ -646,5 +249,7 @@
       </div>
     </div>
   </section>
+  </main>
+  <footer class="footer"><div class="container">Tokyo — A City of Contrasts · Web Lab 6 <a href="./profile/index.html">Justin’s profile</a></div></footer>
 </body>
 </html>

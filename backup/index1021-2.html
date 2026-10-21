@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tokyo</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 80px;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      color: #222;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 30px;
+    }
+
+    /* Navigation */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 70px;
+      background-color: white;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+    }
+
+    .nav-container {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .navbar-brand,
+    .nav-link {
+      color: black;
+      text-decoration: none;
+    }
+
+    .navbar-brand {
+      font-size: 26px;
+      font-weight: bold;
+    }
+
+    .navbar-nav {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-link {
+      font-size: 16px;
+      white-space: nowrap;
+      transition: color 0.3s;
+    }
+
+    .nav-link:hover,
+    .nav-link:focus-visible {
+      color: #d49b00;
+    }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      min-height: 540px;
+      margin-top: 70px;
+      background: url("./img/tokyo_night.png") center / cover;
+      display: flex;
+      align-items: center;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.85),
+        rgba(0, 0, 0, 0.1)
+      );
+    }
+
+    .hero-content {
+      position: relative;
+      color: white;
+      padding-top: 60px;
+      padding-bottom: 60px;
+    }
+
+    .hero-content h1 {
+      margin: 0 0 15px;
+      font-size: 60px;
+    }
+
+    .hero-content p {
+      font-size: 20px;
+      line-height: 1.6;
+    }
+
+    /* Content */
+    .content-section {
+      padding-top: 80px;
+      padding-bottom: 80px;
+    }
+
+    .catalog {
+      margin: 0 0 10px;
+      color: #d49b00;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    .section-title {
+      margin: 10px 0 30px;
+      font-size: 36px;
+    }
+
+    .info-content {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      margin-top: 20px;
+    }
+
+    .info-content p,
+    .image-content {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .info-content p {
+      font-size: 16px;
+      line-height: 1.8;
+    }
+
+    .image-content img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+
+    /* Travel Planner */
+    .planner-description {
+      margin: 0 0 50px;
+      color: #777;
+      line-height: 1.7;
+    }
+
+    .budget-title {
+      margin: 80px 0 24px;
+      font-size: 32px;
+    }
+
+    .table-wrapper {
+      overflow-x: auto;
+    }
+
+    .travel-table {
+      width: 100%;
+      min-width: 580px;
+      border-collapse: collapse;
+      text-align: left;
+    }
+
+    .travel-table th,
+    .travel-table td {
+      border: 1px solid #eeede8;
+      padding: 22px 20px;
+      line-height: 1.5;
+      vertical-align: middle;
+    }
+
+    .travel-table thead th {
+      background-color: #2d3b35;
+      color: white;
+      font-size: 14px;
+      letter-spacing: 0.5px;
+    }
+
+    .travel-table tbody tr:nth-child(even) {
+      background-color: #f8f7f2;
+    }
+
+    .travel-table tbody th {
+      background-color: #f0efe8;
+    }
+
+    .itinerary-table tbody th {
+      width: 18%;
+    }
+
+    .itinerary-table .highlight {
+      background-color: #f7eae0;
+      color: #b25a46;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .budget-table tbody th {
+      width: 40%;
+    }
+
+    .budget-table td:last-child {
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    /* Gallery */
+    .gallery-container {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .image-container {
+      position: relative;
+      width: 200px;
+      aspect-ratio: 1;
+      flex-shrink: 0;
+      border-radius: 50%;
+      overflow: hidden;
+    }
+
+    .image-container .image {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .gallery-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: rgba(185, 88, 230, 0.8);
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+
+    .image-container:hover .gallery-overlay,
+    .image-container:focus-visible .gallery-overlay {
+      opacity: 1;
+    }
+
+    .image-container:hover .image,
+    .image-container:focus-visible .image {
+      transform: scale(1.1);
+    }
+
+    .image-container:focus-visible {
+      outline: 3px solid #d49b00;
+      outline-offset: 5px;
+    }
+
+    .gallery-text {
+      padding: 15px;
+      color: white;
+      font-size: 20px;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    /* Tablet */
+    @media (max-width: 768px) {
+      .navbar-nav {
+        gap: 15px;
+      }
+
+      .nav-link {
+        font-size: 12px;
+      }
+
+      .hero {
+        min-height: 420px;
+      }
+
+      .hero-content h1 {
+        font-size: 46px;
+      }
+
+      .content-section {
+        padding-top: 60px;
+        padding-bottom: 60px;
+      }
+
+      .section-title {
+        font-size: 30px;
+      }
+
+      .info-content {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 20px;
+      }
+
+      .image-container {
+        width: 180px;
+      }
+    }
+
+    /* Mobile */
+    @media (max-width: 600px) {
+      html {
+        scroll-padding-top: 110px;
+      }
+
+      .container {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      .navbar {
+        height: 100px;
+      }
+
+      .nav-container {
+        flex-direction: column;
+        justify-content: center;
+        gap: 12px;
+      }
+
+      .navbar-brand {
+        font-size: 24px;
+      }
+
+      .navbar-nav {
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 8px 12px;
+      }
+
+      .nav-link {
+        font-size: 11px;
+      }
+
+      .hero {
+        margin-top: 100px;
+        min-height: 350px;
+      }
+
+      .hero-content h1 {
+        font-size: 40px;
+      }
+
+      .hero-content p {
+        font-size: 16px;
+      }
+
+      .section-title {
+        font-size: 26px;
+      }
+
+      .info-content p {
+        font-size: 15px;
+      }
+
+      .budget-title {
+        margin-top: 50px;
+        font-size: 26px;
+      }
+
+      .travel-table th,
+      .travel-table td {
+        padding: 16px 14px;
+        font-size: 14px;
+      }
+
+      .gallery-container {
+        gap: 20px;
+      }
+
+      .image-container {
+        width: min(75vw, 240px);
+      }
+    }
+
+    @media (hover: none) {
+      .gallery-overlay {
+        opacity: 1;
+        background-color: rgba(0, 0, 0, 0.3);
+      }
+    }
+  </style>
+</head>
+
+<body id="top">
+  <nav class="navbar" aria-label="Main navigation">
+    <div class="nav-container container">
+      <a class="navbar-brand" href="#top">Tokyo</a>
+
+      <ul class="navbar-nav">
+        <li>
+          <a class="nav-link" href="#discover">DISCOVER</a>
+        </li>
+        <li>
+          <a class="nav-link" href="#neighborhoods">NEIGHBORHOODS</a>
+        </li>
+        <li>
+          <a class="nav-link" href="#travel-planner">TRAVEL PLANNER</a>
+        </li>
+        <li>
+          <a class="nav-link" href="#gallery">GALLERY</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content container">
+      <h1>Tokyo</h1>
+      <p>Discover the vibrant city of Tokyo.</p>
+    </div>
+  </section>
+
+  <section class="content-section container" id="discover">
+    <p class="catalog">01 / DISCOVER</p>
+
+    <h2 class="section-title">Where tradition meets tomorrow.</h2>
+
+    <div class="info-content">
+      <p>
+        <strong>MORE THAN A DESTINATION</strong>
+        <br><br>
+        Tokyo is a city that never stops surprising you.
+        One moment, you are surrounded by bright signs
+        and busy crossings. A few streets away, you
+        might discover a quiet shrine hidden between
+        modern buildings.
+        <br><br>
+        What makes Tokyo special is the way old and
+        new exist side by side. Every neighborhood
+        has its own rhythm, atmosphere, and story
+        to tell.
+        <br><br>
+        <em>
+          "The best way to explore Tokyo is to get
+          a little lost."
+        </em>
+      </p>
+
+      <div class="image-content">
+        <img
+          src="./img/DISCOVER.png"
+          alt="Tokyo city at night"
+          loading="lazy"
+        >
+      </div>
+    </div>
+  </section>
+
+  <section class="content-section container" id="neighborhoods">
+    <p class="catalog">02 / NEIGHBORHOODS</p>
+
+    <h2 class="section-title">Slow down. Look closer.</h2>
+
+    <div class="info-content">
+      <div class="image-content">
+        <img
+          src="./img/tample.png"
+          alt="Traditional temple in Tokyo"
+          loading="lazy"
+        >
+      </div>
+
+      <p>
+        <strong>THE QUIETER SIDE</strong>
+        <br><br>
+        Beyond the crowded stations and famous
+        landmarks, Tokyo is full of peaceful corners.
+        Small cafés, traditional shops, and narrow
+        streets invite visitors to take their time.
+        <br><br>
+        Spend an afternoon walking without a strict
+        plan. Notice the details: wooden doors,
+        warm lanterns, tiny gardens, and the
+        everyday life happening all around you.
+        <br><br>
+        Sometimes the most memorable places are
+        the ones you never planned to visit.
+      </p>
+    </div>
+  </section>
+
+  <section class="content-section container" id="travel-planner">
+    <p class="catalog">03 / TRAVEL PLANNER</p>
+
+    <h2 class="section-title">Three Days in Tokyo.</h2>
+
+    <p class="planner-description">
+      Plan your mornings, afternoons, and evenings
+      with this simple three-day itinerary.
+    </p>
+
+    <div class="table-wrapper">
+      <table
+        class="travel-table itinerary-table"
+        aria-label="Three-day Tokyo itinerary"
+      >
+        <thead>
+          <tr>
+            <th scope="col">Day</th>
+            <th scope="col">Morning</th>
+            <th scope="col">Afternoon</th>
+            <th scope="col">Evening</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <th scope="row">Day 1</th>
+            <td>Asakusa Temple</td>
+            <td>Ueno Park</td>
+            <td>Shibuya</td>
+          </tr>
+          <tr>
+            <th scope="row">Day 2</th>
+            <td>Meiji Shrine</td>
+            <td>Harajuku</td>
+            <td>Shinjuku</td>
+          </tr>
+          <tr>
+            <th scope="row">Day 3</th>
+            <td colspan="2" class="highlight">
+              Tokyo DisneySea
+            </td>
+            <td>Odaiba</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="budget-title">Travel Budget</h3>
+
+    <p class="planner-description">
+      A sample budget for transportation and meals in Tokyo.
+    </p>
+
+    <div class="table-wrapper">
+      <table
+        class="travel-table budget-table"
+        aria-label="Sample Tokyo travel budget"
+      >
+        <thead>
+          <tr>
+            <th scope="col">Category</th>
+            <th scope="col">Item</th>
+            <th scope="col">Estimated Cost</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <th rowspan="2" scope="rowgroup">
+              Transportation
+            </th>
+            <td>Metro</td>
+            <td>¥1,000</td>
+          </tr>
+          <tr>
+            <td>Train</td>
+            <td>¥1,500</td>
+          </tr>
+        </tbody>
+
+        <tbody>
+          <tr>
+            <th rowspan="2" scope="rowgroup">Food</th>
+            <td>Lunch</td>
+            <td>¥1,200</td>
+          </tr>
+          <tr>
+            <td>Dinner</td>
+            <td>¥2,000</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="content-section container" id="gallery">
+    <p class="catalog">04 / GALLERY</p>
+
+    <h2 class="section-title">Gallery</h2>
+
+    <div class="gallery-container">
+      <div class="image-container" tabindex="0">
+        <img
+          src="./img/1.png"
+          alt="Tokyo gallery image 1"
+          class="image"
+          loading="lazy"
+        >
+        <div class="gallery-overlay">
+          <div class="gallery-text">Tokyo</div>
+        </div>
+      </div>
+
+      <div class="image-container" tabindex="0">
+        <img
+          src="./img/2.png"
+          alt="Tokyo gallery image 2"
+          class="image"
+          loading="lazy"
+        >
+        <div class="gallery-overlay">
+          <div class="gallery-text">Explore</div>
+        </div>
+      </div>
+
+      <div class="image-container" tabindex="0">
+        <img
+          src="./img/3.png"
+          alt="Tokyo gallery image 3"
+          class="image"
+          loading="lazy"
+        >
+        <div class="gallery-overlay">
+          <div class="gallery-text">Discover</div>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+</html>
